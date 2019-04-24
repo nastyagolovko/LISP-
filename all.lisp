@@ -93,3 +93,89 @@
 (write (my_reverse '(a b c d e)))
 
 
+
+;2. Определите функцию, возвращающую последний элемент списка
+
+(defun mylist (lst)
+
+   ((lambda (head tail)
+
+           (cond ((null tail) head)
+
+           (t  (mylist tail)))     
+
+    )
+
+    (car lst)
+
+    (cdr lst)
+
+   )
+
+)
+
+
+
+(print (mylist '(1 2 3 4))) 
+
+
+;20.Определите функцию ПЕРВЫЙ-АТОМ, результатом которой будет первый атом списка
+
+(defun first-atom (lst)
+
+   ((lambda (head tail)
+
+         (cond ((atom head)   head)
+
+          (t  (first-atom head))
+
+         )  
+
+    ) 
+
+    (car lst)
+
+    (cdr lst)
+
+   )
+
+
+
+)
+
+(print (first-atom  '(((a b)) c d))) 
+
+
+
+;45. Напишите функцию (РАССТОЯНИЕ a b), вычисляющую расстояние между городами а и b.
+
+(defun Distance (FromCity ToCity) 
+
+  (sqrt (+ (expt (- (get FromCity 'x) (get ToCity 'x)) 2)
+
+           (expt (- (get FromCity 'y) (get ToCity 'y)) 2))
+
+  )
+
+)
+
+
+(defun setCity(Sym &key x y ) 
+
+    (setf (get Sym 'x) x)
+
+    (setf (get Sym 'y) y)
+  
+
+)
+
+
+(setCity 'London :x 2270 :y -445)
+
+(setCity 'Moscow :x 125 :y -125)
+
+(setCity 'Krasnodar :x 300 :y 300)
+
+
+
+(print(distance 'Moscow 'Krasnodar)) ; => 176.7767 
